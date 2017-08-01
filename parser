@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+
+<?php
+
+use AcWikiParser\Commands\NpcParser;
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
+use Symfony\Component\Console\Application;
+
+require __DIR__ . "/vendor/autoload.php";
+
+try{
+    (new Dotenv(__DIR__))->load();
+}catch(InvalidPathException $e){
+
+}
+
+$application = new Application('Asheron\'s Call Wiki Parser', '1.0');
+$application->add(new NpcParser());
+$application->run();
